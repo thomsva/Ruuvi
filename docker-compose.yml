@@ -3,11 +3,14 @@ version: "3.8"
 services:
   ruuvi-gateway:
     image: ghcr.io/scrin/ruuvi-go-gateway
-    restart: always
-    network_mode: host  # required for Bluetooth access
-    privileged: true    # allows access to Bluetooth hardware
+    container_name: ruuvi-go-gateway
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    network_mode: host
+    privileged: true              
     volumes:
-      - ./ruuvi-gateway-config.yml:/app/config.yml:ro
+      - ./config.yml:/config.yml:ro
 
   mosquitto:
     image: eclipse-mosquitto:2
