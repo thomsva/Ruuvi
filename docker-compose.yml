@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  ruuvi-gateway:
+    image: ruuvi/ruuvi-go-gateway:latest
+    restart: always
+    network_mode: host  # required for Bluetooth access
+    privileged: true    # allows access to Bluetooth hardware
+    volumes:
+      - ./ruuvi-gateway-config.yml:/app/config.yml:ro
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"  # WebSocket (optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: always
+    network_mode: host  # recommended for full discovery support
+    volumes:
+      - ./homeassistant:/config
+    environment:
+      - TZ=Europe/Helsinki

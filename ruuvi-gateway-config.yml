@@ -1,0 +1,6 @@
+mqtt:
+  host: "localhost"
+  port: 1883
+  topic_prefix: "ruuvi"
+  client_id: "ruuvi-gateway"
+  qos: 0
