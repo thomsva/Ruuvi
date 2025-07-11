@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   ruuvi-gateway:
-    image: ruuvi/ruuvi-go-gateway:latest
+    image: ghcr.io/scrin/ruuvi-go-gateway
     restart: always
     network_mode: host  # required for Bluetooth access
     privileged: true    # allows access to Bluetooth hardware
