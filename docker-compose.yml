@@ -10,7 +10,7 @@ services:
     network_mode: host
     privileged: true              
     volumes:
-      - ./config.yml:/config.yml:ro
+      - ./ruuvi-gateway-config.yml:/config.yml:ro
 
   mosquitto:
     image: eclipse-mosquitto:2
