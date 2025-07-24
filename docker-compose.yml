@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     depends_on:
       mosquitto:
-        condition: service_healthy
+        condition: service_started
         restart: true
     cap_add:
       - NET_ADMIN
