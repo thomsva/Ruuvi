@@ -1,9 +1,9 @@
-scan_duration: 5s  # Scan every 5 seconds (default)
-use_decoded_data: true  # Enables automatic decoding of sensor packets
+scanDuration: 5s
+useDecodedData: true
 
 mqtt:
   host: "localhost"
   port: 1883
-  topic_prefix: "ruuvi"
-  client_id: "ruuvi-gateway"
+  topicPrefix: "ruuvi"
+  clientID: "ruuvi-gateway"
   qos: 0
