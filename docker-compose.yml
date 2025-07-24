@@ -1,10 +1,13 @@
-version: "3.8"
 
 services:
   ruuvi-gateway:
     image: ghcr.io/scrin/ruuvi-go-gateway
     container_name: ruuvi-go-gateway
     restart: unless-stopped
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+        restart: true
     cap_add:
       - NET_ADMIN
     network_mode: host
