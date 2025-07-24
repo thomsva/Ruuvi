@@ -1,3 +1,6 @@
+scan_duration: 5s  # Scan every 5 seconds (default)
+use_decoded_data: true  # Enables automatic decoding of sensor packets
+
 mqtt:
   host: "localhost"
   port: 1883
