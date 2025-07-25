@@ -34,3 +34,13 @@ services:
       - ./homeassistant:/config
     environment:
       - TZ=Europe/Helsinki
+
+  nodered:
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./nodered/data:/data
+    depends_on:
+      - mosquitto
+    restart: always
